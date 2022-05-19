@@ -64,7 +64,7 @@ extension LoadingCollectionCell {
     
     static var loadingSectionLayout: NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                              heightDimension: .fractionalHeight(1.0))
+                                              heightDimension: .estimated(50))
 
         let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
 

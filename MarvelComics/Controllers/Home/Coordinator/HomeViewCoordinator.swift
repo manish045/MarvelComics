@@ -22,6 +22,9 @@ class HomeViewCoordinator: Coordinator {
     
     private func createViewController() -> HomeViewController {
         // initializing view controller
-        return HomeViewController()
+        let view = HomeViewController.instantiateFromStoryboard()
+        let viewModel = DefaultHomeViewModel()
+        view.viewModel = viewModel
+        return view
     }
 }
