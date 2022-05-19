@@ -9,7 +9,9 @@ import Foundation
     
 protocol HomeViewModelInput {}
 
-protocol HomeViewModelOutput {}
+protocol HomeViewModelOutput {
+    
+}
 
 protocol MoviesListViewModel: HomeViewModelInput, HomeViewModelOutput {}
 

@@ -9,10 +9,12 @@ import UIKit
 
 enum MarvelCharacterSection {
     case characters
+    case loader
 }
 
 enum CharacterItem: Hashable {
     case resultItem(HomeModel)
+    case loading(LoadingItem)
 }
 
 extension MarvelCharacterSection: Sectionable {
@@ -23,15 +25,12 @@ extension MarvelCharacterSection: Sectionable {
             let layoutSection = mapSection()
             layoutSection.contentInsets.top = 15
             return layoutSection
+        case .loader:
+            return LoadingCollectionCell.loadingSectionLayout
         }
     }
     
     fileprivate func mapSection() -> NSCollectionLayoutSection {
-        /*
-         Notice that I estimate my button cell to be 300 points high
-         It's way too much. But since it's an estimation and we're doing things well,
-         it doesn't really matter to the end result.
-        */
         let heightDimension = NSCollectionLayoutDimension.absolute(50)
 
         let itemSize = NSCollectionLayoutSize(
@@ -43,8 +42,8 @@ extension MarvelCharacterSection: Sectionable {
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                                heightDimension: heightDimension)
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        group.contentInsets.leading = 0
-        group.contentInsets.trailing = 0
+        group.contentInsets.leading = 15
+        group.contentInsets.trailing = 15
 
         let section = NSCollectionLayoutSection(group: group)
         return section

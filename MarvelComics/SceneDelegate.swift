@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
-        //Following MVP-C Architechture
+        //Following MVVM-C Architechture
         /// 1. Capture the scene
         guard let windowScene = (scene as? UIWindowScene) else { return }
         

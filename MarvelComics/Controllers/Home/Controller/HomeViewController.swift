@@ -8,10 +8,11 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    
     var viewModel: DefaultHomeViewModel!
     
     @IBOutlet weak var collectionView: UICollectionView!
-    let scheduler: SchedulerContext = SchedulerContextProvider.provide()
+    private let scheduler: SchedulerContext = SchedulerContextProvider.provide()
     
     private lazy var datasource = DiffableDatasource<MarvelCharacterSection, CharacterItem>(collectionView: collectionView!, scheduler: scheduler)
     { [unowned self] (collectionView, indexPath, item) -> UICollectionViewCell? in
@@ -19,6 +20,11 @@ class HomeViewController: UIViewController {
         case .resultItem(let model):
             let cell = collectionView.dequeueCell(HeoresCollectionViewCell.self, indexPath: indexPath)
             cell.titleLabel.text = model.name
+            cell.backgroundColor = .blue
+            return cell
+        case .loading(let loadingItem):
+            let cell = collectionView.dequeueCell(LoadingCollectionCell.self, indexPath: indexPath)
+            cell.configure(data: loadingItem)
             return cell
         }
     } supplementaryViewProvider: {
@@ -28,9 +34,14 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Marvel Characters"
         configureCollectionView()
         createSnapshot(users: getAllData())
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
     }
     
     private func configureCollectionView() {
@@ -52,9 +63,16 @@ class HomeViewController: UIViewController {
         var snapshot = datasource.snapshot()
         snapshot.deleteAllItems()
         snapshot.appendSections([.sections(.characters)])
-
         let nowPlayingItems: [ItemHolder<CharacterItem>] = users.map{.items(.resultItem($0))}
         snapshot.appendItems(nowPlayingItems, toSection: .sections(.characters))
+        
+        let state: LoadingState = .loaded
+        if state == .default || state == .loading {
+            snapshot.appendSections([.loading])
+            let loadingItem = LoadingItem(state: state)
+            snapshot.appendItems([.loading(loadingItem)], toSection: .loading)
+        }
         datasource.apply(snapshot)
     }
+    
 }
