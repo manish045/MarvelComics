@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct HomeModel: Hashable {
+    
+    let name: String
+}
