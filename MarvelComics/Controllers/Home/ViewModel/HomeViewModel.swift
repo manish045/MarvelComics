@@ -6,7 +6,13 @@
 //
 
 import Foundation
+    
+protocol HomeViewModelInput {}
 
-final class HomeViewModel {
+protocol HomeViewModelOutput {}
+
+protocol MoviesListViewModel: HomeViewModelInput, HomeViewModelOutput {}
+
+final class DefaultHomeViewModel: MoviesListViewModel {
     
 }
