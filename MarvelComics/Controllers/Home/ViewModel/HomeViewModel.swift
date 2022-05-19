@@ -6,22 +6,13 @@
 //
 
 import Foundation
-
-<<<<<<< Updated upstream:MarvelComics/Controllers/Home/ViewModel/HomeViewModel.swift
-final class HomeViewModel {
-=======
-
-protocol HomeViewModelInput {
-
-}
-
-protocol HomeViewModelOutput {
     
-}
+protocol HomeViewModelInput {}
+
+protocol HomeViewModelOutput {}
 
 protocol MoviesListViewModel: HomeViewModelInput, HomeViewModelOutput {}
 
 final class DefaultHomeViewModel: MoviesListViewModel {
->>>>>>> Stashed changes:MarvelComics/Controllers/Home/ViewModel/DefaultHomeViewModel.swift
     
 }
