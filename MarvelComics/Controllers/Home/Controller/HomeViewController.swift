@@ -9,6 +9,8 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    var viewModel: DefaultHomeViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
