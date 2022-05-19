@@ -16,6 +16,11 @@
 		B9FDE9EA2835C4CE00767B66 /* MarvelComicsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FDE9E92835C4CE00767B66 /* MarvelComicsTests.swift */; };
 		B9FDE9F42835C4CE00767B66 /* MarvelComicsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FDE9F32835C4CE00767B66 /* MarvelComicsUITests.swift */; };
 		B9FDE9F62835C4CE00767B66 /* MarvelComicsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FDE9F52835C4CE00767B66 /* MarvelComicsUITestsLaunchTests.swift */; };
+		B9FDEA122835C51500767B66 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FDEA052835C51500767B66 /* HomeViewModel.swift */; };
+		B9FDEA132835C51500767B66 /* HomeViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FDEA072835C51500767B66 /* HomeViewCoordinator.swift */; };
+		B9FDEA142835C51500767B66 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FDEA092835C51500767B66 /* HomeViewController.swift */; };
+		B9FDEA162835C51500767B66 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FDEA0E2835C51500767B66 /* HomeModel.swift */; };
+		B9FDEA172835C51500767B66 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FDEA112835C51500767B66 /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +54,11 @@
 		B9FDE9EF2835C4CE00767B66 /* MarvelComicsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelComicsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9FDE9F32835C4CE00767B66 /* MarvelComicsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelComicsUITests.swift; sourceTree = "<group>"; };
 		B9FDE9F52835C4CE00767B66 /* MarvelComicsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelComicsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B9FDEA052835C51500767B66 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		B9FDEA072835C51500767B66 /* HomeViewCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewCoordinator.swift; sourceTree = "<group>"; };
+		B9FDEA092835C51500767B66 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		B9FDEA0E2835C51500767B66 /* HomeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
+		B9FDEA112835C51500767B66 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +111,9 @@
 			children = (
 				B9FDE9D22835C4CD00767B66 /* AppDelegate.swift */,
 				B9FDE9D42835C4CD00767B66 /* SceneDelegate.swift */,
+				B9FDEA022835C51500767B66 /* Controllers */,
+				B9FDEA0A2835C51500767B66 /* Models */,
+				B9FDEA0F2835C51500767B66 /* Shared */,
 				B9FDE9D62835C4CD00767B66 /* ViewController.swift */,
 				B9FDE9D82835C4CD00767B66 /* Main.storyboard */,
 				B9FDE9DB2835C4CE00767B66 /* Assets.xcassets */,
@@ -125,6 +138,80 @@
 				B9FDE9F52835C4CE00767B66 /* MarvelComicsUITestsLaunchTests.swift */,
 			);
 			path = MarvelComicsUITests;
+			sourceTree = "<group>";
+		};
+		B9FDEA022835C51500767B66 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B9FDEA032835C51500767B66 /* Home */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B9FDEA032835C51500767B66 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				B9FDEA042835C51500767B66 /* ViewModel */,
+				B9FDEA062835C51500767B66 /* Coordinator */,
+				B9FDEA082835C51500767B66 /* Controller */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		B9FDEA042835C51500767B66 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B9FDEA052835C51500767B66 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B9FDEA062835C51500767B66 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				B9FDEA072835C51500767B66 /* HomeViewCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		B9FDEA082835C51500767B66 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B9FDEA092835C51500767B66 /* HomeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B9FDEA0A2835C51500767B66 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B9FDEA0B2835C51500767B66 /* Shared */,
+				B9FDEA0E2835C51500767B66 /* HomeModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B9FDEA0B2835C51500767B66 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		B9FDEA0F2835C51500767B66 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				B9FDEA102835C51500767B66 /* Protocols */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		B9FDEA102835C51500767B66 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				B9FDEA112835C51500767B66 /* Coordinator.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,9 +345,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9FDEA132835C51500767B66 /* HomeViewCoordinator.swift in Sources */,
 				B9FDE9D72835C4CD00767B66 /* ViewController.swift in Sources */,
 				B9FDE9D32835C4CD00767B66 /* AppDelegate.swift in Sources */,
 				B9FDE9D52835C4CD00767B66 /* SceneDelegate.swift in Sources */,
+				B9FDEA162835C51500767B66 /* HomeModel.swift in Sources */,
+				B9FDEA122835C51500767B66 /* HomeViewModel.swift in Sources */,
+				B9FDEA142835C51500767B66 /* HomeViewController.swift in Sources */,
+				B9FDEA172835C51500767B66 /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
