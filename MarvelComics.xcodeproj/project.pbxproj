@@ -132,6 +132,16 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
+		B9D7C16D28370D36009EC0E8 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				B9FDE9D22835C4CD00767B66 /* AppDelegate.swift */,
+				B9D7C15E283702EE009EC0E8 /* AppAppearance.swift */,
+				B9FDE9D42835C4CD00767B66 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
 		B9E652FC2836C81100AD1819 /* Extenstion */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,8 +195,7 @@
 		B9FDE9D12835C4CD00767B66 /* MarvelComics */ = {
 			isa = PBXGroup;
 			children = (
-				B9FDE9D22835C4CD00767B66 /* AppDelegate.swift */,
-				B9FDE9D42835C4CD00767B66 /* SceneDelegate.swift */,
+				B9D7C16D28370D36009EC0E8 /* Application */,
 				B9FDEA342836A74400767B66 /* DiffableDataSource */,
 				B9FDEA2E2836699600767B66 /* Cells */,
 				B9FDEA022835C51500767B66 /* Controllers */,

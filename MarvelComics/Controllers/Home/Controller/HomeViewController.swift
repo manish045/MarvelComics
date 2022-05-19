@@ -20,6 +20,10 @@ class HomeViewController: UIViewController {
             let cell = collectionView.dequeueCell(HeoresCollectionViewCell.self, indexPath: indexPath)
             cell.titleLabel.text = model.name
             return cell
+        case .loading(let loadingItem):
+            let cell = collectionView.dequeueCell(LoadingCollectionCell.self, indexPath: indexPath)
+            cell.configure(data: loadingItem)
+            return cell
         }
     } supplementaryViewProvider: {
         [unowned self] (collectionView, kind, indexPath, section) -> UICollectionReusableView? in
@@ -55,6 +59,13 @@ class HomeViewController: UIViewController {
 
         let nowPlayingItems: [ItemHolder<CharacterItem>] = users.map{.items(.resultItem($0))}
         snapshot.appendItems(nowPlayingItems, toSection: .sections(.characters))
+        
+        let state: LoadingState = .loading
+        if state == .default || state == .loading {
+            snapshot.appendSections([.loading])
+            let loadingItem = LoadingItem(state: state)
+            snapshot.appendItems([.loading(loadingItem)], toSection: .loading)
+        }
         datasource.apply(snapshot)
     }
 }
