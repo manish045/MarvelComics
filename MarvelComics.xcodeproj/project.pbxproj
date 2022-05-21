@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		B9BC7A2C2838A0310049A441 /* UIImageView+ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BC7A2B2838A0310049A441 /* UIImageView+ImageLoader.swift */; };
 		B9BC7A2F2838A05E0049A441 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = B9BC7A2E2838A05E0049A441 /* SDWebImage */; };
+		B9BC7A322838A8180049A441 /* MCharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BC7A312838A8180049A441 /* MCharacterDetailViewController.swift */; };
+		B9BC7A392838A8C50049A441 /* DefaultMCharacterDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BC7A382838A8C50049A441 /* DefaultMCharacterDetailViewModel.swift */; };
+		B9BC7A3B2838A9350049A441 /* MCharacterDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BC7A3A2838A9350049A441 /* MCharacterDetailCoordinator.swift */; };
+		B9BC7A3F2838AE9C0049A441 /* PreLoadedDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BC7A3E2838AE9C0049A441 /* PreLoadedDataModel.swift */; };
 		B9D7C15D2836F201009EC0E8 /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D7C15C2836F201009EC0E8 /* NibView.swift */; };
 		B9D7C15F283702EE009EC0E8 /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D7C15E283702EE009EC0E8 /* AppAppearance.swift */; };
 		B9D7C163283704B7009EC0E8 /* LoaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9D7C161283704B7009EC0E8 /* LoaderView.xib */; };
@@ -68,6 +72,10 @@
 
 /* Begin PBXFileReference section */
 		B9BC7A2B2838A0310049A441 /* UIImageView+ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+ImageLoader.swift"; sourceTree = "<group>"; };
+		B9BC7A312838A8180049A441 /* MCharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCharacterDetailViewController.swift; sourceTree = "<group>"; };
+		B9BC7A382838A8C50049A441 /* DefaultMCharacterDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMCharacterDetailViewModel.swift; sourceTree = "<group>"; };
+		B9BC7A3A2838A9350049A441 /* MCharacterDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCharacterDetailCoordinator.swift; sourceTree = "<group>"; };
+		B9BC7A3E2838AE9C0049A441 /* PreLoadedDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreLoadedDataModel.swift; sourceTree = "<group>"; };
 		B9D7C15C2836F201009EC0E8 /* NibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NibView.swift; path = ../Common/Base/NibView.swift; sourceTree = "<group>"; };
 		B9D7C15E283702EE009EC0E8 /* AppAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
 		B9D7C161283704B7009EC0E8 /* LoaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoaderView.xib; sourceTree = "<group>"; };
@@ -144,6 +152,56 @@
 				B9BC7A2B2838A0310049A441 /* UIImageView+ImageLoader.swift */,
 			);
 			path = "UIImageView+ImageLoader.swift";
+			sourceTree = "<group>";
+		};
+		B9BC7A302838A7EC0049A441 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				B9BC7A372838A88E0049A441 /* Coordinator */,
+				B9BC7A362838A8870049A441 /* ViewModel */,
+				B9BC7A352838A8650049A441 /* View */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		B9BC7A352838A8650049A441 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B9BC7A312838A8180049A441 /* MCharacterDetailViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B9BC7A362838A8870049A441 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B9BC7A382838A8C50049A441 /* DefaultMCharacterDetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B9BC7A372838A88E0049A441 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				B9BC7A3A2838A9350049A441 /* MCharacterDetailCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		B9BC7A3C2838AE700049A441 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				B9BC7A3D2838AE780049A441 /* PreLoadedDataModel */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		B9BC7A3D2838AE780049A441 /* PreLoadedDataModel */ = {
+			isa = PBXGroup;
+			children = (
+				B9BC7A3E2838AE9C0049A441 /* PreLoadedDataModel.swift */,
+			);
+			path = PreLoadedDataModel;
 			sourceTree = "<group>";
 		};
 		B9D7C160283704B7009EC0E8 /* LoaderView */ = {
@@ -266,6 +324,7 @@
 		B9FDEA022835C51500767B66 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B9BC7A302838A7EC0049A441 /* Detail */,
 				B9FDEA032835C51500767B66 /* Home */,
 			);
 			path = Controllers;
@@ -274,9 +333,9 @@
 		B9FDEA032835C51500767B66 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				B9FDEA042835C51500767B66 /* ViewModel */,
 				B9FDEA062835C51500767B66 /* Coordinator */,
-				B9FDEA082835C51500767B66 /* Controller */,
+				B9FDEA042835C51500767B66 /* ViewModel */,
+				B9FDEA082835C51500767B66 /* View */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -297,18 +356,19 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
-		B9FDEA082835C51500767B66 /* Controller */ = {
+		B9FDEA082835C51500767B66 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				B9FDEA092835C51500767B66 /* HomeViewController.swift */,
 				B9FDEA402836A79A00767B66 /* HomeSection.swift */,
 			);
-			path = Controller;
+			path = View;
 			sourceTree = "<group>";
 		};
 		B9FDEA0A2835C51500767B66 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B9BC7A3C2838AE700049A441 /* Detail */,
 				B9FDEA2B2836667400767B66 /* Home */,
 			);
 			path = Models;
@@ -521,6 +581,7 @@
 				B9D7C15F283702EE009EC0E8 /* AppAppearance.swift in Sources */,
 				B9FDE9D52835C4CD00767B66 /* SceneDelegate.swift in Sources */,
 				B9FDEA162835C51500767B66 /* MarvelModel.swift in Sources */,
+				B9BC7A322838A8180049A441 /* MCharacterDetailViewController.swift in Sources */,
 				B9FDEA122835C51500767B66 /* HomeViewModel.swift in Sources */,
 				B9FDC0C42837E9080005D451 /* APIService+URL.swift in Sources */,
 				B9FDEA3F2836A74400767B66 /* DiffableDatasource.swift in Sources */,
@@ -528,6 +589,7 @@
 				B9E653052836C81100AD1819 /* UITableView+Extension.swift in Sources */,
 				B9FDEA412836A79A00767B66 /* HomeSection.swift in Sources */,
 				B9E653022836C81100AD1819 /* UIView+NibRepresentable.swift in Sources */,
+				B9BC7A3F2838AE9C0049A441 /* PreLoadedDataModel.swift in Sources */,
 				B9FDEA3C2836A74400767B66 /* LoadingItem.swift in Sources */,
 				B9FDEA3D2836A74400767B66 /* LoadingCollectionCell.swift in Sources */,
 				B9E653042836C81100AD1819 /* extension.swift in Sources */,
@@ -535,6 +597,7 @@
 				B9BC7A2C2838A0310049A441 /* UIImageView+ImageLoader.swift in Sources */,
 				B9FDEA142835C51500767B66 /* HomeViewController.swift in Sources */,
 				B9D7C16B28370607009EC0E8 /* HeoresCollectionViewCell.swift in Sources */,
+				B9BC7A3B2838A9350049A441 /* MCharacterDetailCoordinator.swift in Sources */,
 				B9FDC0CD28382AE80005D451 /* MarvelServiceUtil.swift in Sources */,
 				B9E653112836C8B300AD1819 /* SchedulerContext.swift in Sources */,
 				B9FDC0C82837E9080005D451 /* APIService+Helper.swift in Sources */,
@@ -543,6 +606,7 @@
 				B9FDEA3E2836A74400767B66 /* SectionLayoutProvider.swift in Sources */,
 				B9FDEA172835C51500767B66 /* Coordinator.swift in Sources */,
 				B9D7C15D2836F201009EC0E8 /* NibView.swift in Sources */,
+				B9BC7A392838A8C50049A441 /* DefaultMCharacterDetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

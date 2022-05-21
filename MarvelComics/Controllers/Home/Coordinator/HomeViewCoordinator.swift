@@ -7,24 +7,31 @@
 
 import UIKit
 
+protocol HomeViewCoordinatorInput {
+    func pushToDetail(model: PreLoadedDataModel)
+}
 
-class HomeViewCoordinator: Coordinator {
-    var rootController: UINavigationController?
+class HomeViewCoordinator: Coordinator, HomeViewCoordinatorInput {
+    
+    var rootController: UIViewController?
     
     func makeModule() -> UIViewController {
         let vc = createViewController()
+        rootController = vc
         return vc
-    }
-    
-    func start(from presentingController: UINavigationController) {
-        rootController = presentingController
     }
     
     private func createViewController() -> HomeViewController {
         // initializing view controller
         let view = HomeViewController.instantiateFromStoryboard()
-        let viewModel = DefaultHomeViewModel()
+        let viewModel = DefaultHomeViewModel(coordinator: self)
         view.viewModel = viewModel
         return view
+    }
+    
+    func pushToDetail(model: PreLoadedDataModel) {
+        let vc = MCharacterDetailCoordinator()
+            .makeModule(model: model)
+        rootController?.navigationController?.pushViewController(vc, animated: true)
     }
 }
