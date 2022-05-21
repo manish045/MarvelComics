@@ -6,11 +6,15 @@
 //
 
 import UIKit
+import Combine
 
 class HomeViewController: UIViewController {
     
     var viewModel: DefaultHomeViewModel!
-    
+    private var disposeBag = Set<AnyCancellable>()
+    private var state: LoadingState = .loading
+
+
     @IBOutlet weak var collectionView: UICollectionView!
     private let scheduler: SchedulerContext = SchedulerContextProvider.provide()
     
@@ -20,7 +24,6 @@ class HomeViewController: UIViewController {
         case .resultItem(let model):
             let cell = collectionView.dequeueCell(HeoresCollectionViewCell.self, indexPath: indexPath)
             cell.titleLabel.text = model.name
-            cell.backgroundColor = .blue
             return cell
         case .loading(let loadingItem):
             let cell = collectionView.dequeueCell(LoadingCollectionCell.self, indexPath: indexPath)
@@ -36,8 +39,29 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         title = "Marvel Characters"
         configureCollectionView()
-        createSnapshot(users: getAllData())
+        addObservers()
+        viewModel.fetchMarvelCharacters()
         // Do any additional setup after loading the view.
+    }
+    
+    private func addObservers() {
+        viewModel.loadDataSource
+            .receive(on: scheduler.ui)
+            .sink{ [weak self] (showLoader, charactesList) in
+                guard let self = self else {return}
+                self.state = showLoader ? .loading : .completed
+                self.createSnapshot(characterList: charactesList)
+            }
+            .store(in: &disposeBag)
+        
+        viewModel.didGetError
+            .receive(on: scheduler.ui)
+            .sink { [weak self] (error, charactesList) in
+                guard let self = self else {return}
+                self.state = .completed
+                self.createSnapshot(characterList: charactesList)
+            }
+            .store(in: &disposeBag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,31 +72,29 @@ class HomeViewController: UIViewController {
         collectionView.registerNibCell(ofType: HeoresCollectionViewCell.self)
     }
     
-    func getAllData() -> [HomeModel] {
-        return [
-            HomeModel(name: "Person 1"),
-            HomeModel(name: "Person 2"),
-            HomeModel(name: "Person 3"),
-            HomeModel(name: "Person 4"),
-            HomeModel(name: "Person 5"),
-            HomeModel(name: "Person 6")
-        ]
-    }
-    
-    func createSnapshot(users: [HomeModel]){
+    func createSnapshot(characterList: [MarvelCharacterModel]) {
         var snapshot = datasource.snapshot()
         snapshot.deleteAllItems()
         snapshot.appendSections([.sections(.characters)])
-        let nowPlayingItems: [ItemHolder<CharacterItem>] = users.map{.items(.resultItem($0))}
+        let nowPlayingItems: [ItemHolder<CharacterItem>] = characterList.map{.items(.resultItem($0))}
         snapshot.appendItems(nowPlayingItems, toSection: .sections(.characters))
         
-        let state: LoadingState = .loaded
-        if state == .default || state == .loading {
+        if state == .default || state == .loading || state == .failed{
             snapshot.appendSections([.loading])
             let loadingItem = LoadingItem(state: state)
             snapshot.appendItems([.loading(loadingItem)], toSection: .loading)
         }
         datasource.apply(snapshot)
     }
-    
+}
+
+extension HomeViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+
+        if offsetY > contentHeight - scrollView.frame.size.height {
+            viewModel.loadNextPage()
+        }
+    }
 }

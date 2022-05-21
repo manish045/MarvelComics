@@ -40,11 +40,10 @@ enum EndPoints {
     }
 }
 
-extension APIService {
+extension APIMarvelService {
     struct URLString {
         private static let environment = APIEnvironment.staging
         static var base: String { environment.baseURL }
-        static var socketBaseURL: String { environment.baseURL }
     }
     
     static func URL(_ endPoint: EndPoints) -> String {

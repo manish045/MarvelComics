@@ -30,7 +30,7 @@ enum APIError: Error, Equatable {
     }
 }
 
-extension APIService {
+extension APIMarvelService {
     //MARK: WeSservice parsing helper
         
     func isNetwork() -> Bool {

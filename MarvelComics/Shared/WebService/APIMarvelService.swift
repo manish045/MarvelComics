@@ -20,9 +20,9 @@ protocol PerformRequest {
                                       completion: @escaping (APIResult<T, APIError>) -> Void)
 }
 
-class APIService: SessionManager, PerformRequest {
+class APIMarvelService: SessionManager, PerformRequest {
     
-    static let shared = APIService()
+    static let shared = APIMarvelService()
     var network: Network
 
     init(network: Network = Network()) {
@@ -58,19 +58,16 @@ class APIService: SessionManager, PerformRequest {
     func performRequest<T: BaseModel>(endPoint: EndPoints,
                                       parameters: [String : Any],
                                       completion: @escaping (APIResult<T, APIError>) -> Void) {
-
         guard isNetwork() else {
             completion(.error(APIError.noNetwork))
             return
         }
         
-        let urlStr = APIService.URL(endPoint)
-        let url = Foundation.URL(string: urlStr)!
-        var request = URLRequest(url: url)
-        request.httpMethod = endPoint.httpMethod.rawValue
-        request.cachePolicy = .returnCacheDataDontLoad
-
-        self.request(request).validate().debugLog().responseDecodable { [weak self] (response: DataResponse<T>) in
+        let url = APIMarvelService.URL(endPoint)
+        guard let finalUrl = MSUtils.buildServiceRequestUrl(baseUrl: url) else{
+            return
+        }
+        request(finalUrl,method: endPoint.httpMethod, parameters: parameters).validate().debugLog().responseDecodable { [weak self] (response: DataResponse<T>) in
             let parsedResponse = self?.validateAF(response: response)
             guard let object = parsedResponse?.successModel else {
                 completion(.error(parsedResponse?.error ?? .parsingFailed))
@@ -89,3 +86,5 @@ extension Request {
         return self
     }
 }
+
+

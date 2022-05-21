@@ -7,13 +7,13 @@
 
 import UIKit
 
-enum MarvelCharacterSection {
-    case characters
+enum MarvelCharacterSection: Int {
+    case characters = 0
     case loader
 }
 
 enum CharacterItem: Hashable {
-    case resultItem(HomeModel)
+    case resultItem(MarvelCharacterModel)
     case loading(LoadingItem)
 }
 
