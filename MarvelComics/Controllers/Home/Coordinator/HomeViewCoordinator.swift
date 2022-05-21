@@ -8,7 +8,7 @@
 import UIKit
 
 protocol HomeViewCoordinatorInput {
-    func pushToDetail(model: PreLoadedDataModel)
+    func pushToDetail(model: MarvelCharacterModel)
 }
 
 class HomeViewCoordinator: Coordinator, HomeViewCoordinatorInput {
@@ -29,7 +29,7 @@ class HomeViewCoordinator: Coordinator, HomeViewCoordinatorInput {
         return view
     }
     
-    func pushToDetail(model: PreLoadedDataModel) {
+    func pushToDetail(model: MarvelCharacterModel) {
         let vc = MCharacterDetailCoordinator()
             .makeModule(model: model)
         rootController?.navigationController?.pushViewController(vc, animated: true)

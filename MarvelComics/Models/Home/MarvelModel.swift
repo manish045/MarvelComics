@@ -71,9 +71,20 @@ struct Comics: BaseModel {
 }
 
 // MARK: - ComicsItem
-struct ComicsItem: BaseModel {
+struct ComicsItem:  BaseModel, Hashable {
+    var uniqueId:UUID? = UUID()
     let resourceURI: String?
     let name: String?
+    
+    func hash(into hasher: inout Hasher) {
+      hasher.combine(uniqueId)
+    }
+    
+    static func == (lhs: ComicsItem, rhs: ComicsItem) -> Bool {
+        return lhs.uniqueId == rhs.uniqueId &&
+        lhs.resourceURI == rhs.resourceURI &&
+        lhs.name == rhs.name
+    }
 }
 
 // MARK: - Stories

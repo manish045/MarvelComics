@@ -16,16 +16,16 @@ class MCharacterDetailCoordinator: Coordinator {
     
     init() {}
     
-    func makeModule(model: PreLoadedDataModel) -> UIViewController {
+    func makeModule(model: MarvelCharacterModel) -> UIViewController {
         let vc = createViewController(model: model)
         rootController = vc
         return vc
     }
     
-    private func createViewController(model: PreLoadedDataModel) -> MCharacterDetailViewController {
+    private func createViewController(model: MarvelCharacterModel) -> MCharacterDetailViewController {
         // initializing view controller
         let view = MCharacterDetailViewController.instantiateFromStoryboard()
-        let viewModel = DefaultMCharacterDetailViewModel(preloadedDataModel: model)
+        let viewModel = DefaultMCharacterDetailViewModel(marvelCharacterModel: model)
         view.viewModel = viewModel
         return view
     }
