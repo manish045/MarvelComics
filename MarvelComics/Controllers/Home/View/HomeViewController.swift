@@ -14,7 +14,6 @@ class HomeViewController: UIViewController {
     private var disposeBag = Set<AnyCancellable>()
     private var state: LoadingState = .loading
 
-
     @IBOutlet weak var collectionView: UICollectionView!
     private let scheduler: SchedulerContext = SchedulerContextProvider.provide()
     
@@ -39,6 +38,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         title = "Marvel Characters"
         configureCollectionView()
+        configureSearchBar()
         createSnapshot(characterList: [])
         addObservers()
         viewModel.fetchMarvelCharacters()
@@ -63,6 +63,15 @@ class HomeViewController: UIViewController {
                 self.createSnapshot(characterList: charactesList)
             }
             .store(in: &disposeBag)
+        
+        viewModel.searchTextSubject
+            .debounce(for: 0.2, scheduler: scheduler.ui)
+            .sink { [weak self] (charactesList) in
+                guard let self = self else {return}
+                self.state = .completed
+                self.createSnapshot(characterList: charactesList)
+            }
+            .store(in: &disposeBag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,13 +89,29 @@ class HomeViewController: UIViewController {
         let nowPlayingItems: [ItemHolder<CharacterItem>] = characterList.map{.items(.resultItem($0))}
         snapshot.appendItems(nowPlayingItems, toSection: .sections(.characters))
         
-        if state == .default || state == .loading || state == .failed{
+        if state == .default || state == .loading{
             snapshot.appendSections([.loading])
             let loadingItem = LoadingItem(state: state)
             snapshot.appendItems([.loading(loadingItem)], toSection: .loading)
         }
         datasource.apply(snapshot)
     }
+    
+    private func configureSearchBar() {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.automaticallyShowsScopeBar = true
+        searchController.searchResultsUpdater = self
+        navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.searchController = searchController
+    }
+}
+
+extension HomeViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        viewModel.filterListForSearchBar(string: searchController.searchBar.text ?? "")
+    }
+    
 }
 
 extension HomeViewController: UIScrollViewDelegate {

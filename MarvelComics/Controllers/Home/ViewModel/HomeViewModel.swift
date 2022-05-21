@@ -11,12 +11,15 @@ import Combine
 protocol HomeViewModelInput {
     func fetchMarvelCharacters()
     func loadNextPage()
+    func filterListForSearchBar(string: String)
     func pushToCharacterDetailScreen(model: PreLoadedDataModel)
 }
 
 protocol HomeViewModelOutput {
     var loadDataSource: PassthroughSubject<(Bool,MarvelModelList), Never> { get}
     var didGetError: PassthroughSubject<(APIError, MarvelModelList), Never> {get}
+    var searchTextSubject: PassthroughSubject<MarvelModelList, Never>{get}
+
 }
 
 protocol MoviesListViewModel: HomeViewModelInput, HomeViewModelOutput {}
@@ -42,6 +45,7 @@ final class DefaultHomeViewModel: MoviesListViewModel {
     //Bool Manages Loader, secondValue manages heroes array, failure block manages Error
     var loadDataSource = PassthroughSubject<(Bool,MarvelModelList), Never>()
     var didGetError = PassthroughSubject<(APIError, MarvelModelList), Never>()
+    var searchTextSubject = PassthroughSubject<MarvelModelList, Never>()
     
     //Manages wheather to load next page or not
     private var loadDataOnNextPage = true
@@ -85,6 +89,15 @@ final class DefaultHomeViewModel: MoviesListViewModel {
                 break
             }
         }
+    }
+    
+    func filterListForSearchBar(string: String) {
+        if string.isEmpty {
+            searchTextSubject.send(marvelCharactersDataSource)
+        }else{
+            let filteredArray = self.marvelCharactersDataSource.filter({$0.name?.lowercased().contains(string.lowercased()) as! Bool})
+            searchTextSubject.send(filteredArray)
+        }        
     }
     
     func pushToCharacterDetailScreen(model: PreLoadedDataModel) {
