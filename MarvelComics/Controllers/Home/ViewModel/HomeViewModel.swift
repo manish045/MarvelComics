@@ -11,6 +11,7 @@ import Combine
 protocol HomeViewModelInput {
     func fetchMarvelCharacters()
     func loadNextPage()
+    func pushToCharacterDetailScreen(model: PreLoadedDataModel)
 }
 
 protocol HomeViewModelOutput {
@@ -23,6 +24,7 @@ protocol MoviesListViewModel: HomeViewModelInput, HomeViewModelOutput {}
 final class DefaultHomeViewModel: MoviesListViewModel {
     
     var apiService: APIMarvelService
+    var coordinator: HomeViewCoordinatorInput
     
     private var limit = 20
     private var pageOffset = 0
@@ -44,8 +46,10 @@ final class DefaultHomeViewModel: MoviesListViewModel {
     //Manages wheather to load next page or not
     private var loadDataOnNextPage = true
     
-    init(apiService: APIMarvelService = APIMarvelService.shared) {
+    init(apiService: APIMarvelService = APIMarvelService.shared,
+         coordinator: HomeViewCoordinatorInput) {
         self.apiService = apiService
+        self.coordinator = coordinator
     }
     
     func loadNextPage() {
@@ -83,7 +87,7 @@ final class DefaultHomeViewModel: MoviesListViewModel {
         }
     }
     
-    func loadHeroDetail() {
-        
+    func pushToCharacterDetailScreen(model: PreLoadedDataModel) {
+        self.coordinator.pushToDetail(model: model)
     }
 }

@@ -15,7 +15,7 @@ protocol Coordinator {
     //    associatedtype InputData
 
     /// Intial controller of the module
-    var rootController: UINavigationController? { get }
+    var rootController: UIViewController? { get }
 }
 
 extension Coordinator {
