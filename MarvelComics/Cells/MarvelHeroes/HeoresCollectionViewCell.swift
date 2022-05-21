@@ -28,3 +28,25 @@ class HeoresCollectionViewCell: UICollectionViewCell {
         }
     }
 }
+
+extension HeoresCollectionViewCell {
+    
+    static var heroCollectionSectionLayout:  NSCollectionLayoutSection {
+        let heightDimension = NSCollectionLayoutDimension.absolute(70)
+
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: heightDimension)
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets.bottom = 0
+
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                               heightDimension: heightDimension)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        group.contentInsets.leading = 15
+        group.contentInsets.trailing = 15
+
+        let section = NSCollectionLayoutSection(group: group)
+        return section
+    }
+}

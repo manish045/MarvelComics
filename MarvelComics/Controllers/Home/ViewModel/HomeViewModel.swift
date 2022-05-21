@@ -12,7 +12,7 @@ protocol HomeViewModelInput {
     func fetchMarvelCharacters()
     func loadNextPage()
     func filterListForSearchBar(string: String)
-    func pushToCharacterDetailScreen(model: PreLoadedDataModel)
+    func pushToCharacterDetailScreen(model: MarvelCharacterModel)
 }
 
 protocol HomeViewModelOutput {
@@ -100,7 +100,7 @@ final class DefaultHomeViewModel: MoviesListViewModel {
         }        
     }
     
-    func pushToCharacterDetailScreen(model: PreLoadedDataModel) {
+    func pushToCharacterDetailScreen(model: MarvelCharacterModel) {
         self.coordinator.pushToDetail(model: model)
     }
 }

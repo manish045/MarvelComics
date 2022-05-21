@@ -129,8 +129,6 @@ extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? HeoresCollectionViewCell else {return}
         if let model = cell.marvelCharacterModel {
-            let model = PreLoadedDataModel(name: model.name ?? "",
-                                           id: model.id)
             self.viewModel.pushToCharacterDetailScreen(model: model)
         }
     }

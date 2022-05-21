@@ -12,17 +12,17 @@ protocol InputMCharacterDetailViewModel {
 }
 
 protocol OutputMCharacterDetailViewModel {
-    var preloadedDataModel: PreLoadedDataModel {get}
+    var marvelCharacterModel: MarvelCharacterModel {get}
 }
 
 protocol MCharacterDetailViewModel: InputMCharacterDetailViewModel, OutputMCharacterDetailViewModel {}
 
 final class DefaultMCharacterDetailViewModel: MCharacterDetailViewModel {
     
-    var preloadedDataModel: PreLoadedDataModel
+    var marvelCharacterModel: MarvelCharacterModel
     
-    init(preloadedDataModel: PreLoadedDataModel) {
-        self.preloadedDataModel = preloadedDataModel
+    init(marvelCharacterModel: MarvelCharacterModel) {
+        self.marvelCharacterModel = marvelCharacterModel
     }
     
 }

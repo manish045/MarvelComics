@@ -68,6 +68,7 @@ extension LoadingCollectionCell {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),
             heightDimension: heightDimension)
+        
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets.bottom = 0
 
