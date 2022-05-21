@@ -35,11 +35,17 @@ struct MarvelCharacterModel: Hashable, BaseModel {
     let id: Int
     let name, resultDescription: String?
     let modified: Date?
-    let thumbnail: Thumbnail?
+    private let thumbnail: Thumbnail?
     let resourceURI: String?
     let comics, series: Comics?
     let stories: Stories?
     let events: Comics?
+    var characterImage: String {
+        guard let path = thumbnail?.path, let thumbnailExtension = thumbnail?.thumbnailExtension else {
+            return ""
+        }
+        return (path+"."+thumbnailExtension)
+    }
 
     enum CodingKeys: String, CodingKey {
         case id, name

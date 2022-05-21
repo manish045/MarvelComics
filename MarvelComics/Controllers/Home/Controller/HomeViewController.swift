@@ -23,7 +23,7 @@ class HomeViewController: UIViewController {
         switch item {
         case .resultItem(let model):
             let cell = collectionView.dequeueCell(HeoresCollectionViewCell.self, indexPath: indexPath)
-            cell.titleLabel.text = model.name
+            cell.marvelCharacterModel = model
             return cell
         case .loading(let loadingItem):
             let cell = collectionView.dequeueCell(LoadingCollectionCell.self, indexPath: indexPath)
@@ -39,6 +39,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         title = "Marvel Characters"
         configureCollectionView()
+        createSnapshot(characterList: [])
         addObservers()
         viewModel.fetchMarvelCharacters()
         // Do any additional setup after loading the view.
