@@ -22,6 +22,8 @@ protocol MoviesListViewModel: HomeViewModelInput, HomeViewModelOutput {}
 
 final class DefaultHomeViewModel: MoviesListViewModel {
     
+    var apiService: APIMarvelService
+    
     private var limit = 20
     private var pageOffset = 0
 
@@ -42,8 +44,8 @@ final class DefaultHomeViewModel: MoviesListViewModel {
     //Manages wheather to load next page or not
     private var loadDataOnNextPage = true
     
-    init() {
-        
+    init(apiService: APIMarvelService = APIMarvelService.shared) {
+        self.apiService = apiService
     }
     
     func loadNextPage() {
@@ -63,7 +65,7 @@ final class DefaultHomeViewModel: MoviesListViewModel {
             "offset" : pageOffset,
         ] as [String : Any]
         
-        APIMarvelService.shared.performRequest(endPoint: .characters, parameters: params) { [weak self] (result: APIResult<MarvelModel, APIError>) in
+        apiService.performRequest(endPoint: .characters, parameters: params) { [weak self] (result: APIResult<MarvelModel, APIError>) in
             switch result {
             case .success(let model):
                 guard let self = self else {return}
@@ -79,5 +81,9 @@ final class DefaultHomeViewModel: MoviesListViewModel {
                 break
             }
         }
+    }
+    
+    func loadHeroDetail() {
+        
     }
 }

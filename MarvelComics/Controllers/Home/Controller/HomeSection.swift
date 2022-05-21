@@ -31,7 +31,7 @@ extension MarvelCharacterSection: Sectionable {
     }
     
     fileprivate func mapSection() -> NSCollectionLayoutSection {
-        let heightDimension = NSCollectionLayoutDimension.absolute(50)
+        let heightDimension = NSCollectionLayoutDimension.absolute(70)
 
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),

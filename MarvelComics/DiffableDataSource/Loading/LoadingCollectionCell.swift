@@ -63,19 +63,19 @@ public class LoadingCollectionCell: UICollectionViewCell {
 extension LoadingCollectionCell {
     
     static var loadingSectionLayout: NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                              heightDimension: .estimated(50))
+        let heightDimension = NSCollectionLayoutDimension.absolute(50)
 
-        let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: heightDimension)
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets.bottom = 0
 
-        let layoutGroup = NSCollectionLayoutGroup.vertical(layoutSize: itemSize,
-                                                           subitems: [layoutItem])
-        
-        layoutGroup.contentInsets = NSDirectionalEdgeInsets(horizontal: 10,
-                                                            vertical: 10)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                               heightDimension: heightDimension)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
 
-        let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
-        layoutSection.interGroupSpacing = 10
-        return layoutSection
+        let section = NSCollectionLayoutSection(group: group)
+        return section
     }
 }
