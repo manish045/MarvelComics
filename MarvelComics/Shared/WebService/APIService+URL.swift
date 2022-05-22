@@ -24,14 +24,14 @@ enum APIEnvironment {
 
 enum EndPoints {
     case characters
-    case characterDetail(id: Int)
+    case characterComics(id: Int)
     
     var url: String {
         switch self {
         case .characters:
             return "v1/public/characters"
-        case .characterDetail(let id):
-            return "v1/public/characters/\(id)"
+        case .characterComics(let id):
+            return "v1/public/characters/\(id)/comics"
         }
     }
     

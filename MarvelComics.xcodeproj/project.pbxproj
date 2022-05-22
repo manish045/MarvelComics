@@ -13,12 +13,14 @@
 		B9BC7A392838A8C50049A441 /* DefaultMCharacterDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BC7A382838A8C50049A441 /* DefaultMCharacterDetailViewModel.swift */; };
 		B9BC7A3B2838A9350049A441 /* MCharacterDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BC7A3A2838A9350049A441 /* MCharacterDetailCoordinator.swift */; };
 		B9BC7A41283967910049A441 /* MCharacterDetailSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BC7A40283967910049A441 /* MCharacterDetailSection.swift */; };
-		B9BC7A4828396BF90049A441 /* MHeroImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BC7A4628396BF90049A441 /* MHeroImageCollectionViewCell.swift */; };
-		B9BC7A4928396BF90049A441 /* MHeroImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9BC7A4728396BF90049A441 /* MHeroImageCollectionViewCell.xib */; };
-		B9BC7A5228397CEF0049A441 /* MHeroComicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BC7A5028397CEF0049A441 /* MHeroComicCollectionViewCell.swift */; };
-		B9BC7A5328397CEF0049A441 /* MHeroComicCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9BC7A5128397CEF0049A441 /* MHeroComicCollectionViewCell.xib */; };
+		B9BC7A4828396BF90049A441 /* MHeroComicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BC7A4628396BF90049A441 /* MHeroComicCollectionViewCell.swift */; };
+		B9BC7A4928396BF90049A441 /* MHeroComicCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9BC7A4728396BF90049A441 /* MHeroComicCollectionViewCell.xib */; };
+		B9BC7A5228397CEF0049A441 /* MHeroDescriptionWithImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BC7A5028397CEF0049A441 /* MHeroDescriptionWithImageCollectionViewCell.swift */; };
+		B9BC7A5328397CEF0049A441 /* MHeroDescriptionWithImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9BC7A5128397CEF0049A441 /* MHeroDescriptionWithImageCollectionViewCell.xib */; };
 		B9BC7A56283998890049A441 /* MHeroComicHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BC7A54283998890049A441 /* MHeroComicHeaderCollectionReusableView.swift */; };
 		B9BC7A57283998890049A441 /* MHeroComicHeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9BC7A55283998890049A441 /* MHeroComicHeaderCollectionReusableView.xib */; };
+		B9BC7A5B2839AB920049A441 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BC7A5A2839AB920049A441 /* Utils.swift */; };
+		B9BC7A5E2839B4D80049A441 /* MarvelComicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BC7A5D2839B4D80049A441 /* MarvelComicModel.swift */; };
 		B9D7C15D2836F201009EC0E8 /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D7C15C2836F201009EC0E8 /* NibView.swift */; };
 		B9D7C15F283702EE009EC0E8 /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D7C15E283702EE009EC0E8 /* AppAppearance.swift */; };
 		B9D7C163283704B7009EC0E8 /* LoaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9D7C161283704B7009EC0E8 /* LoaderView.xib */; };
@@ -82,12 +84,14 @@
 		B9BC7A382838A8C50049A441 /* DefaultMCharacterDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMCharacterDetailViewModel.swift; sourceTree = "<group>"; };
 		B9BC7A3A2838A9350049A441 /* MCharacterDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCharacterDetailCoordinator.swift; sourceTree = "<group>"; };
 		B9BC7A40283967910049A441 /* MCharacterDetailSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCharacterDetailSection.swift; sourceTree = "<group>"; };
-		B9BC7A4628396BF90049A441 /* MHeroImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHeroImageCollectionViewCell.swift; sourceTree = "<group>"; };
-		B9BC7A4728396BF90049A441 /* MHeroImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MHeroImageCollectionViewCell.xib; sourceTree = "<group>"; };
-		B9BC7A5028397CEF0049A441 /* MHeroComicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHeroComicCollectionViewCell.swift; sourceTree = "<group>"; };
-		B9BC7A5128397CEF0049A441 /* MHeroComicCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MHeroComicCollectionViewCell.xib; sourceTree = "<group>"; };
+		B9BC7A4628396BF90049A441 /* MHeroComicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHeroComicCollectionViewCell.swift; sourceTree = "<group>"; };
+		B9BC7A4728396BF90049A441 /* MHeroComicCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MHeroComicCollectionViewCell.xib; sourceTree = "<group>"; };
+		B9BC7A5028397CEF0049A441 /* MHeroDescriptionWithImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHeroDescriptionWithImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		B9BC7A5128397CEF0049A441 /* MHeroDescriptionWithImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MHeroDescriptionWithImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		B9BC7A54283998890049A441 /* MHeroComicHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHeroComicHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		B9BC7A55283998890049A441 /* MHeroComicHeaderCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MHeroComicHeaderCollectionReusableView.xib; sourceTree = "<group>"; };
+		B9BC7A5A2839AB920049A441 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		B9BC7A5D2839B4D80049A441 /* MarvelComicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelComicModel.swift; sourceTree = "<group>"; };
 		B9D7C15C2836F201009EC0E8 /* NibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NibView.swift; path = ../Common/Base/NibView.swift; sourceTree = "<group>"; };
 		B9D7C15E283702EE009EC0E8 /* AppAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
 		B9D7C161283704B7009EC0E8 /* LoaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoaderView.xib; sourceTree = "<group>"; };
@@ -223,8 +227,8 @@
 		B9BC7A4528396BE30049A441 /* MHeroImage */ = {
 			isa = PBXGroup;
 			children = (
-				B9BC7A4628396BF90049A441 /* MHeroImageCollectionViewCell.swift */,
-				B9BC7A4728396BF90049A441 /* MHeroImageCollectionViewCell.xib */,
+				B9BC7A4628396BF90049A441 /* MHeroComicCollectionViewCell.swift */,
+				B9BC7A4728396BF90049A441 /* MHeroComicCollectionViewCell.xib */,
 			);
 			path = MHeroImage;
 			sourceTree = "<group>";
@@ -241,8 +245,8 @@
 		B9BC7A4F28397CD40049A441 /* MHeroComics */ = {
 			isa = PBXGroup;
 			children = (
-				B9BC7A5028397CEF0049A441 /* MHeroComicCollectionViewCell.swift */,
-				B9BC7A5128397CEF0049A441 /* MHeroComicCollectionViewCell.xib */,
+				B9BC7A5028397CEF0049A441 /* MHeroDescriptionWithImageCollectionViewCell.swift */,
+				B9BC7A5128397CEF0049A441 /* MHeroDescriptionWithImageCollectionViewCell.xib */,
 			);
 			path = MHeroComics;
 			sourceTree = "<group>";
@@ -265,6 +269,14 @@
 				B9FDE9DD2835C4CE00767B66 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		B9BC7A5C2839B4CA0049A441 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				B9BC7A5D2839B4D80049A441 /* MarvelComicModel.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		B9D7C160283704B7009EC0E8 /* LoaderView */ = {
@@ -301,6 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				B9E653102836C8B300AD1819 /* SchedulerContext.swift */,
+				B9BC7A5A2839AB920049A441 /* Utils.swift */,
 			);
 			name = Util;
 			path = "../../../Desktop/Video Streamer/Video Streamer/Util";
@@ -427,6 +440,7 @@
 		B9FDEA0A2835C51500767B66 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B9BC7A5C2839B4CA0049A441 /* Detail */,
 				B9FDEA2B2836667400767B66 /* Home */,
 			);
 			path = Models;
@@ -602,12 +616,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9BC7A5328397CEF0049A441 /* MHeroComicCollectionViewCell.xib in Resources */,
+				B9BC7A5328397CEF0049A441 /* MHeroDescriptionWithImageCollectionViewCell.xib in Resources */,
 				B9FDE9DF2835C4CE00767B66 /* LaunchScreen.storyboard in Resources */,
 				B9D7C163283704B7009EC0E8 /* LoaderView.xib in Resources */,
 				B9FDE9DC2835C4CE00767B66 /* Assets.xcassets in Resources */,
 				B9FDC0D028382C890005D451 /* MarvelPlist.plist in Resources */,
-				B9BC7A4928396BF90049A441 /* MHeroImageCollectionViewCell.xib in Resources */,
+				B9BC7A4928396BF90049A441 /* MHeroComicCollectionViewCell.xib in Resources */,
 				B9FDEA3B2836A74400767B66 /* LoadingCollectionCell.xib in Resources */,
 				B9D7C16C28370607009EC0E8 /* HeoresCollectionViewCell.xib in Resources */,
 				B9BC7A57283998890049A441 /* MHeroComicHeaderCollectionReusableView.xib in Resources */,
@@ -638,15 +652,16 @@
 			files = (
 				B9FDC0C62837E9080005D451 /* BaseModel+Helper.swift in Sources */,
 				B9FDEA132835C51500767B66 /* HomeViewCoordinator.swift in Sources */,
-				B9BC7A5228397CEF0049A441 /* MHeroComicCollectionViewCell.swift in Sources */,
+				B9BC7A5228397CEF0049A441 /* MHeroDescriptionWithImageCollectionViewCell.swift in Sources */,
 				B9BC7A56283998890049A441 /* MHeroComicHeaderCollectionReusableView.swift in Sources */,
 				B9FDE9D32835C4CD00767B66 /* AppDelegate.swift in Sources */,
 				B9D7C15F283702EE009EC0E8 /* AppAppearance.swift in Sources */,
 				B9FDE9D52835C4CD00767B66 /* SceneDelegate.swift in Sources */,
 				B9FDEA162835C51500767B66 /* MarvelModel.swift in Sources */,
-				B9BC7A4828396BF90049A441 /* MHeroImageCollectionViewCell.swift in Sources */,
+				B9BC7A4828396BF90049A441 /* MHeroComicCollectionViewCell.swift in Sources */,
 				B9BC7A322838A8180049A441 /* MCharacterDetailViewController.swift in Sources */,
 				B9FDEA122835C51500767B66 /* HomeViewModel.swift in Sources */,
+				B9BC7A5B2839AB920049A441 /* Utils.swift in Sources */,
 				B9FDC0C42837E9080005D451 /* APIService+URL.swift in Sources */,
 				B9FDEA3F2836A74400767B66 /* DiffableDatasource.swift in Sources */,
 				B9FDC0C72837E9080005D451 /* BaseModel.swift in Sources */,
@@ -668,6 +683,7 @@
 				B9FDC0C52837E9080005D451 /* APIMarvelService.swift in Sources */,
 				B9D7C164283704B7009EC0E8 /* LoaderView.swift in Sources */,
 				B9FDEA3E2836A74400767B66 /* SectionLayoutProvider.swift in Sources */,
+				B9BC7A5E2839B4D80049A441 /* MarvelComicModel.swift in Sources */,
 				B9FDEA172835C51500767B66 /* Coordinator.swift in Sources */,
 				B9D7C15D2836F201009EC0E8 /* NibView.swift in Sources */,
 				B9BC7A392838A8C50049A441 /* DefaultMCharacterDetailViewModel.swift in Sources */,

@@ -12,19 +12,21 @@ class HeoresCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var characterNameLabel: UILabel!
     @IBOutlet weak var characterImageView: UIImageView!
+    @IBOutlet weak var characterDescriptionLabel: UILabel!
+    @IBOutlet weak var cellBackgroundView: UIView!
+    @IBOutlet weak var nameBackgroundView: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        characterImageView.layer.cornerRadius = characterImageView.frame.height/2
-        characterImageView.layer.borderColor = UIColor.black.cgColor
-        characterImageView.layer.borderWidth = 1
+        cellBackgroundView.setCornerRadius(12)
     }
 
     var marvelCharacterModel: MarvelCharacterModel! {
         didSet {
             characterNameLabel.text = marvelCharacterModel.name
-            characterImageView.downloadImage(from: marvelCharacterModel.characterImage, placeholderImage: UIImage(named: ""))
+            self.characterDescriptionLabel.text = marvelCharacterModel.resultDescription
+            characterImageView.downloadImage(from: marvelCharacterModel.thumbnail?.imageString, placeholderImage: UIImage(named: ""))
         }
     }
 }
@@ -32,13 +34,13 @@ class HeoresCollectionViewCell: UICollectionViewCell {
 extension HeoresCollectionViewCell {
     
     static var heroCollectionSectionLayout:  NSCollectionLayoutSection {
-        let heightDimension = NSCollectionLayoutDimension.absolute(70)
+        let heightDimension = NSCollectionLayoutDimension.absolute(230)
 
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),
             heightDimension: heightDimension)
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets.bottom = 0
+        item.contentInsets.bottom = 15
 
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                                heightDimension: heightDimension)

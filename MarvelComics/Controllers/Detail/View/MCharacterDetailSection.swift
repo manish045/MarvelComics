@@ -8,18 +8,22 @@
 import UIKit
 
 enum MCharacterDetailSection: Int {
+    case characterImageAndDescription
     case comicsForCharater
 }
 
 enum CharacterDetailItem: Hashable {
-    case comicsCharcterInItem(ComicsItem)
+    case characterDetailItem(MarvelCharacterModel)
+    case comicsCharcterInItem(ComicsModel)
 }
 
 extension MCharacterDetailSection: Sectionable {
     func layout(environment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? {
         switch self {
         case .comicsForCharater:
-            return MHeroComicCollectionViewCell.heroComicSectionLayout(headerHeight: 40)
+            return MHeroComicCollectionViewCell.heroComicSectionLayout(heightDimension: .estimated(300), widthDimension: .absolute(170))
+        case .characterImageAndDescription:
+            return MHeroDescriptionWithImageCollectionViewCell.heroComicSectionLayout()
         }
     }
 }
