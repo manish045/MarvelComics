@@ -15,11 +15,23 @@ enum APIError: Error, Equatable {
     case noNetwork
     case serverError(String)
     case generalError(String)
+    case invalidAPIKey
+    case invalidCredetial
+    case vaildTimeStamp
+    case missingParams
     
     var asString: String {
         switch self {
         case .parsingFailed, .somethingWrong:
             return "Something went wrong, Please try again!"
+        case .invalidAPIKey:
+            return "The passed API key is invalid."
+        case .invalidCredetial:
+            return "InvalidCredentials"
+        case .vaildTimeStamp:
+            return "You must provide a timestamp."
+        case .missingParams:
+            return "MissingParameter"
         case .noNetwork:
             return "No network available"
         case .serverError(let str):

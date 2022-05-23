@@ -88,7 +88,7 @@ class MCharacterDetailViewController: UIViewController {
         let nowPlayingItems: [ItemHolder<CharacterDetailItem>] = comicsForCharacter.map{.items(.comicsCharcterInItem($0))}
         snapshot.appendItems(nowPlayingItems, toSection: .sections(.comicsForCharater))
         
-        datasource.apply(snapshot)
+        datasource.apply(snapshot, animatingDifferences: true)
     }
     
 }
