@@ -17,7 +17,6 @@ class HomeViewCoordinator: Coordinator, HomeViewCoordinatorInput {
     
     func makeModule() -> UIViewController {
         let vc = createViewController()
-        rootController = vc
         return vc
     }
     
@@ -27,6 +26,10 @@ class HomeViewCoordinator: Coordinator, HomeViewCoordinatorInput {
         let viewModel = DefaultHomeViewModel(coordinator: self)
         view.viewModel = viewModel
         return view
+    }
+    
+    func start(from presentingController: UIViewController) {
+        rootController = presentingController
     }
     
     func pushToDetail(model: MarvelCharacterModel) {

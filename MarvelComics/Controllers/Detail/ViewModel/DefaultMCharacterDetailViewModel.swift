@@ -27,12 +27,12 @@ final class DefaultMCharacterDetailViewModel: MCharacterDetailViewModel {
     @Published private var marvelComicDataSource = ComicModelList()
     var loadDataSource: Published<ComicModelList>.Publisher {$marvelComicDataSource}
     
-    private var apiService: APIMarvelService
+    private var apiService: PerformRequest
     
     var didGetError = PassthroughSubject<APIError, Never>()
     
     init(marvelCharacterModel: MarvelCharacterModel,
-         apiService: APIMarvelService = APIMarvelService.shared) {
+         apiService: PerformRequest = APIMarvelService()) {
         self.marvelCharacterModel = marvelCharacterModel
         self.apiService = apiService
     }

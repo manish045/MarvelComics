@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class HomeViewController: UIViewController {
+class HomeViewController: BaseVC {
     
     var viewModel: DefaultHomeViewModel!
     private var disposeBag = Set<AnyCancellable>()
@@ -42,13 +42,14 @@ class HomeViewController: UIViewController {
         createSnapshot(characterList: [])
         addObservers()
         viewModel.fetchMarvelCharacters()
+        self.createStateView(view: self.collectionView)
         // Do any additional setup after loading the view.
     }
     
     private func addObservers() {
         viewModel.loadDataSource
             .receive(on: scheduler.ui)
-            .sink{ [weak self] (showLoader, charactesList) in
+            .sink { [weak self] (showLoader, charactesList) in
                 guard let self = self else {return}
                 self.state = showLoader ? .loading : .completed
                 self.createSnapshot(characterList: charactesList)
@@ -57,10 +58,10 @@ class HomeViewController: UIViewController {
         
         viewModel.didGetError
             .receive(on: scheduler.ui)
-            .sink { [weak self] (error, charactesList) in
+            .sink { [weak self] (error, characterList) in
                 guard let self = self else {return}
                 self.state = .completed
-                self.createSnapshot(characterList: charactesList)
+                (characterList.count <= 0) ? self.showErrorScreen(error: error) : (self.createSnapshot(characterList: characterList))
             }
             .store(in: &disposeBag)
         
@@ -104,6 +105,13 @@ class HomeViewController: UIViewController {
         searchController.searchResultsUpdater = self
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchController
+    }
+    
+    func showErrorScreen(error: APIError) {
+        switch error {
+        default:
+            stateView?.setStateNoDataFound(title: error.asString)
+        }
     }
 }
 
