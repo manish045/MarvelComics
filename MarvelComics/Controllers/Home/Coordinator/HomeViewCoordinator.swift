@@ -32,6 +32,6 @@ class HomeViewCoordinator: Coordinator, HomeViewCoordinatorInput {
     func pushToDetail(model: MarvelCharacterModel) {
         let vc = MCharacterDetailCoordinator()
             .makeModule(model: model)
-        rootController?.navigationController?.pushViewController(vc, animated: true)
+        rootController?.navigationController?.present(vc, animated: true, completion: nil)
     }
 }

@@ -60,3 +60,8 @@ struct Thumbnail: BaseModel {
         case thumbnailExtension = "extension"
     }
 }
+
+struct ErrorHandlingModel: Decodable {
+    let code: String?
+    let message: String?
+}
