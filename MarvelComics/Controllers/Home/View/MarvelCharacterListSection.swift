@@ -1,5 +1,5 @@
 //
-//  HomeSection.swift
+//  MarvelCharacterList.swift
 //  MarvelComics
 //
 //  Created by Manish Tamta on 19/05/2022.

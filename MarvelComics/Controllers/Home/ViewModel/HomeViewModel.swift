@@ -21,12 +21,12 @@ protocol HomeViewModelOutput {
     var searchTextSubject: PassthroughSubject<MarvelModelList, Never>{get}
 }
 
-protocol MoviesListViewModel: HomeViewModelInput, HomeViewModelOutput {}
+protocol MarvelCharacterListViewModel: HomeViewModelInput, HomeViewModelOutput {}
 
-final class DefaultHomeViewModel: MoviesListViewModel {
+final class DefaultMarvelCharacterListViewModel: MarvelCharacterListViewModel {
     
     var apiService: PerformRequest
-    var coordinator: HomeViewCoordinatorInput
+    var coordinator: MarvelCharacterListCoordinatorInput
     
     private var limit = 20
     private var pageOffset = 0
@@ -50,7 +50,7 @@ final class DefaultHomeViewModel: MoviesListViewModel {
     private var loadDataOnNextPage = true
     
     init(apiService: PerformRequest = APIMarvelService(),
-         coordinator: HomeViewCoordinatorInput) {
+         coordinator: MarvelCharacterListCoordinatorInput) {
         self.apiService = apiService
         self.coordinator = coordinator
     }

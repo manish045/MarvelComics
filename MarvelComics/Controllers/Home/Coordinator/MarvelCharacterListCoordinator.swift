@@ -7,11 +7,11 @@
 
 import UIKit
 
-protocol HomeViewCoordinatorInput {
+protocol MarvelCharacterListCoordinatorInput {
     func pushToDetail(model: MarvelCharacterModel)
 }
 
-class HomeViewCoordinator: Coordinator, HomeViewCoordinatorInput {
+class MarvelCharacterListCoordinator: Coordinator, MarvelCharacterListCoordinatorInput {
     
     var rootController: UIViewController?
     
@@ -20,10 +20,10 @@ class HomeViewCoordinator: Coordinator, HomeViewCoordinatorInput {
         return vc
     }
     
-    private func createViewController() -> HomeViewController {
+    private func createViewController() -> MarvelCharacterListViewController {
         // initializing view controller
-        let view = HomeViewController.instantiateFromStoryboard()
-        let viewModel = DefaultHomeViewModel(coordinator: self)
+        let view = MarvelCharacterListViewController.instantiateFromStoryboard()
+        let viewModel = DefaultMarvelCharacterListViewModel(coordinator: self)
         view.viewModel = viewModel
         return view
     }
