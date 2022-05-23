@@ -22,7 +22,6 @@ protocol PerformRequest {
 
 class APIMarvelService: SessionManager, PerformRequest {
     
-    static let shared = APIMarvelService()
     var network: Network
 
     init(network: Network = Network()) {
@@ -64,7 +63,7 @@ class APIMarvelService: SessionManager, PerformRequest {
         }
         
         let url = APIMarvelService.URL(endPoint)
-        guard let finalUrl = MSUtils.buildServiceRequestUrl(baseUrl: url) else{
+        guard let finalUrl = MSUtils().buildServiceRequestUrl(baseUrl: url) else{
             return
         }
         request(finalUrl,method: endPoint.httpMethod, parameters: parameters).validate().debugLog().responseDecodable { [weak self] (response: DataResponse<T>) in

@@ -19,14 +19,13 @@ protocol HomeViewModelOutput {
     var loadDataSource: PassthroughSubject<(Bool,MarvelModelList), Never> { get}
     var didGetError: PassthroughSubject<(APIError, MarvelModelList), Never> {get}
     var searchTextSubject: PassthroughSubject<MarvelModelList, Never>{get}
-
 }
 
 protocol MoviesListViewModel: HomeViewModelInput, HomeViewModelOutput {}
 
 final class DefaultHomeViewModel: MoviesListViewModel {
     
-    var apiService: APIMarvelService
+    var apiService: PerformRequest
     var coordinator: HomeViewCoordinatorInput
     
     private var limit = 20
@@ -50,7 +49,7 @@ final class DefaultHomeViewModel: MoviesListViewModel {
     //Manages wheather to load next page or not
     private var loadDataOnNextPage = true
     
-    init(apiService: APIMarvelService = APIMarvelService.shared,
+    init(apiService: PerformRequest = APIMarvelService(),
          coordinator: HomeViewCoordinatorInput) {
         self.apiService = apiService
         self.coordinator = coordinator
