@@ -34,6 +34,7 @@ class MarvelCharacterListViewController: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Do any additional setup after loading the view.
         title = "Marvel Characters"
         configureCollectionView()
         configureSearchBar()
@@ -41,9 +42,10 @@ class MarvelCharacterListViewController: BaseVC {
         addObservers()
         viewModel.fetchMarvelCharacters()
         self.createStateView(view: self.collectionView)
-        // Do any additional setup after loading the view.
+        
     }
     
+    // Add observers from ViewModel to load data whenever change
     private func addObservers() {
         viewModel.loadDataSource
             .receive(on: scheduler.ui)
@@ -76,15 +78,23 @@ class MarvelCharacterListViewController: BaseVC {
         self.navigationController?.navigationBar.isHidden = false
     }
     
+    //Register Cells for collectionView
     private func configureCollectionView() {
         collectionView.registerNibCell(ofType: HeoresCollectionViewCell.self)
     }
     
+    //MARK :- Create and construct a section snapshot, then apply to `main` section in data source.
     func createSnapshot(characterList: [MarvelCharacterModel], state: LoadingState) {
         var snapshot = datasource.snapshot()
         snapshot.deleteAllItems()
+        
+        //Append Section to snapshot
         snapshot.appendSections([.sections(.characters)])
+        
+        //Serialize data according to cell model
         let nowPlayingItems: [ItemHolder<CharacterItem>] = characterList.map{.items(.resultItem($0))}
+        
+        //Append cell to desired section
         snapshot.appendItems(nowPlayingItems, toSection: .sections(.characters))
         
         if state == .default || state == .loading{
@@ -92,9 +102,12 @@ class MarvelCharacterListViewController: BaseVC {
             let loadingItem = LoadingItem(state: state)
             snapshot.appendItems([.loading(loadingItem)], toSection: .loading)
         }
+        
+        //Apply snapshot to datasource to reload data in collectionView
         datasource.apply(snapshot)
     }
     
+    //Add SearchBar to NavigationBar
     private func configureSearchBar() {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
@@ -113,6 +126,8 @@ class MarvelCharacterListViewController: BaseVC {
 }
 
 extension MarvelCharacterListViewController: UISearchResultsUpdating {
+
+    //MARK :- Get updated search result from Searchbar
     func updateSearchResults(for searchController: UISearchController) {
         viewModel.filterListForSearchBar(string: searchController.searchBar.text ?? "")
     }
@@ -120,6 +135,8 @@ extension MarvelCharacterListViewController: UISearchResultsUpdating {
 }
 
 extension MarvelCharacterListViewController: UIScrollViewDelegate {
+    
+    //Determine the scroll direction of collectionView
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
@@ -131,6 +148,8 @@ extension MarvelCharacterListViewController: UIScrollViewDelegate {
 }
 
 extension MarvelCharacterListViewController: UICollectionViewDelegate {
+    
+    // Push to the cell data when pressed
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? HeoresCollectionViewCell else {return}
         if let model = cell.marvelCharacterModel {

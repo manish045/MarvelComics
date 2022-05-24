@@ -31,13 +31,14 @@ final class DefaultMCharacterDetailViewModel: MCharacterDetailViewModel {
     
     var didGetError = PassthroughSubject<APIError, Never>()
     
+    // D.I:- inititalizing dependent objects
     init(marvelCharacterModel: MarvelCharacterModel,
          apiService: PerformRequest = APIMarvelService()) {
         self.marvelCharacterModel = marvelCharacterModel
         self.apiService = apiService
     }
     
-    
+    // Call api to fetch comics from server
     func fetchComics() {
         apiService.performRequest(endPoint: .characterComics(id: marvelCharacterModel.id), parameters: [:]) { [weak self] (result: APIResult<ComicsDataModel, APIError>) in
             switch result {

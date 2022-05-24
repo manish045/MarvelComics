@@ -33,7 +33,7 @@ class MCharacterDetailViewController: BaseVC {
         guard kind == UICollectionView.elementKindSectionHeader else {
             return nil
         }
-        
+        //Add header to Section
         switch MCharacterDetailSection(rawValue: indexPath.section) {
         case .comicsForCharater:
             let view = collectionView.dequeueReusableSupplementaryView(MHeroComicHeaderCollectionReusableView.self, kind: kind, indexPath: indexPath)
@@ -57,6 +57,7 @@ class MCharacterDetailViewController: BaseVC {
         addViewModelObservers()
     }
     
+    // Add observers from ViewModel to load data whenever change
     private func addViewModelObservers() {
         viewModel.loadDataSource
             .receive(on: scheduler.ui)
@@ -68,25 +69,33 @@ class MCharacterDetailViewController: BaseVC {
             .store(in: &disposeBag)
     }
     
+    //Register Cells for collectionView
     private func configureCollectionView() {
         collectionView.registerNibCell(ofType: MHeroComicCollectionViewCell.self)
         collectionView.registerNibCell(ofType: MHeroDescriptionWithImageCollectionViewCell.self)
         collectionView.registerHeader(ofType: MHeroComicHeaderCollectionReusableView.self)
     }
     
-    
+    //MARK :- Create and construct a section snapshot, then apply to `main` section in data source.
     func createSnapshot(marvelCharacter: MarvelCharacterModel, comicsForCharacter: ComicModelList) {
         var snapshot = datasource.snapshot()
         snapshot.deleteAllItems()
         
+        //Append Section to snapshot
         snapshot.appendSections([.sections(.characterImageAndDescription)])
+        
+        //Serialize data according to cell model
         let characterDetail: ItemHolder<CharacterDetailItem> = .items(.characterDetailItem(marvelCharacter))
+        
+        //Append cell to desired section
         snapshot.appendItems([characterDetail], toSection: .sections(.characterImageAndDescription))
+        
         
         snapshot.appendSections([.sections(.comicsForCharater)])
         let nowPlayingItems: [ItemHolder<CharacterDetailItem>] = comicsForCharacter.map{.items(.comicsCharcterInItem($0))}
         snapshot.appendItems(nowPlayingItems, toSection: .sections(.comicsForCharater))
         
+        //Apply snapshot to datasource to reload data in collectionView
         datasource.apply(snapshot, animatingDifferences: true)
     }
     
