@@ -8,14 +8,13 @@
 import UIKit
 import Combine
 
-class MCharacterDetailViewController: UIViewController {
+class MCharacterDetailViewController: BaseVC {
 
     var viewModel: DefaultMCharacterDetailViewModel!
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     private var disposeBag = Set<AnyCancellable>()
-    private let scheduler: SchedulerContext = SchedulerContextProvider.provide()
     
     private lazy var datasource = DiffableDatasource<MCharacterDetailSection, CharacterDetailItem>(collectionView: collectionView!, scheduler: scheduler)
     { [unowned self] (collectionView, indexPath, item) -> UICollectionViewCell? in

@@ -37,7 +37,6 @@ extension MHeroDescriptionWithImageCollectionViewCell {
             widthDimension: .fractionalWidth(1),
             heightDimension: heightDimension)
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets.bottom = 15
 
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                                heightDimension: heightDimension)

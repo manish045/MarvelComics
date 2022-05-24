@@ -21,7 +21,7 @@ extension MCharacterDetailSection: Sectionable {
     func layout(environment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? {
         switch self {
         case .comicsForCharater:
-            return MHeroComicCollectionViewCell.heroComicSectionLayout(heightDimension: .estimated(300), widthDimension: .absolute(170))
+            return MHeroComicCollectionViewCell.heroComicSectionLayout(heightDimension: .absolute(289), widthDimension: .absolute(170))
         case .characterImageAndDescription:
             return MHeroDescriptionWithImageCollectionViewCell.heroComicSectionLayout()
         }

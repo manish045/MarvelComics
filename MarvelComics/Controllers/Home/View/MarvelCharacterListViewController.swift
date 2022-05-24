@@ -14,9 +14,8 @@ class MarvelCharacterListViewController: BaseVC {
     private var disposeBag = Set<AnyCancellable>()
 
     @IBOutlet weak var collectionView: UICollectionView!
-    private let scheduler: SchedulerContext = SchedulerContextProvider.provide()
     
-    private lazy var datasource = DiffableDatasource<MarvelCharacterSection, CharacterItem>(collectionView: collectionView!, scheduler: scheduler)
+    private lazy var datasource = DiffableDatasource<MarvelCharacterSection, CharacterItem>(collectionView: collectionView!, scheduler: self.scheduler)
     { [unowned self] (collectionView, indexPath, item) -> UICollectionViewCell? in
         switch item {
         case .resultItem(let model):
