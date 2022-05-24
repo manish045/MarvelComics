@@ -11,10 +11,12 @@ protocol MarvelCharacterListCoordinatorInput {
     func pushToDetail(model: MarvelCharacterModel)
 }
 
+/// Coordinator :- Organizing flow logic between view controllers
 class MarvelCharacterListCoordinator: Coordinator, MarvelCharacterListCoordinatorInput {
     
     var rootController: UIViewController?
     
+    //Create View Controller instance with all possible initialization for viewModel and controller
     func makeModule() -> UIViewController {
         let vc = createViewController()
         return vc
@@ -28,6 +30,7 @@ class MarvelCharacterListCoordinator: Coordinator, MarvelCharacterListCoordinato
         return view
     }
     
+    //Pass the navigationController to the initial controller
     func start(from presentingController: UIViewController) {
         rootController = presentingController
     }

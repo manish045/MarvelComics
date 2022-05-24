@@ -41,11 +41,12 @@ extension MHeroComicCollectionViewCell {
     static func heroComicSectionLayout(heightDimension: NSCollectionLayoutDimension,
                                        widthDimension: NSCollectionLayoutDimension,
                                        headerHeight: NSCollectionLayoutDimension = .absolute(30)) ->  NSCollectionLayoutSection {
-
+        // Item
         let itemSize = NSCollectionLayoutSize(widthDimension:  .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 8, bottom: 0, trailing: 8)
 
+        // Group
         let groupSize = NSCollectionLayoutSize(widthDimension: widthDimension,
                                                heightDimension: heightDimension)
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
@@ -54,6 +55,7 @@ extension MHeroComicCollectionViewCell {
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: headerHeight)
         let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
         
+        // Section
         let section = NSCollectionLayoutSection(group: group)
         section.boundarySupplementaryItems = [header]
         section.orthogonalScrollingBehavior  = .paging

@@ -33,14 +33,18 @@ extension MHeroDescriptionWithImageCollectionViewCell {
     static func heroComicSectionLayout() ->  NSCollectionLayoutSection {
         let heightDimension = NSCollectionLayoutDimension.estimated(500)
 
+        // Item
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),
             heightDimension: heightDimension)
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
+        //Group
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                                heightDimension: heightDimension)
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        
+        // Section
         let section = NSCollectionLayoutSection(group: group)        
         return section
     }
