@@ -8,11 +8,10 @@
 import UIKit
 import Combine
 
-class HomeViewController: BaseVC {
+class MarvelCharacterListViewController: BaseVC {
     
-    var viewModel: DefaultHomeViewModel!
+    var viewModel: DefaultMarvelCharacterListViewModel!
     private var disposeBag = Set<AnyCancellable>()
-    private var state: LoadingState = .loading
 
     @IBOutlet weak var collectionView: UICollectionView!
     private let scheduler: SchedulerContext = SchedulerContextProvider.provide()
@@ -39,7 +38,7 @@ class HomeViewController: BaseVC {
         title = "Marvel Characters"
         configureCollectionView()
         configureSearchBar()
-        createSnapshot(characterList: [])
+        createSnapshot(characterList: [], state: .loading)
         addObservers()
         viewModel.fetchMarvelCharacters()
         self.createStateView(view: self.collectionView)
@@ -51,8 +50,8 @@ class HomeViewController: BaseVC {
             .receive(on: scheduler.ui)
             .sink { [weak self] (showLoader, charactesList) in
                 guard let self = self else {return}
-                self.state = showLoader ? .loading : .completed
-                self.createSnapshot(characterList: charactesList)
+                let state: LoadingState = showLoader ? .loading : .completed
+                self.createSnapshot(characterList: charactesList, state: state)
             }
             .store(in: &disposeBag)
         
@@ -60,8 +59,8 @@ class HomeViewController: BaseVC {
             .receive(on: scheduler.ui)
             .sink { [weak self] (error, characterList) in
                 guard let self = self else {return}
-                self.state = .completed
-                (characterList.count <= 0) ? self.showErrorScreen(error: error) : (self.createSnapshot(characterList: characterList))
+
+                (characterList.count <= 0) ? self.showErrorScreen(error: error) : (self.createSnapshot(characterList: characterList, state: .completed))
             }
             .store(in: &disposeBag)
         
@@ -69,8 +68,7 @@ class HomeViewController: BaseVC {
             .debounce(for: 0.2, scheduler: scheduler.ui)
             .sink { [weak self] (charactesList) in
                 guard let self = self else {return}
-                self.state = .completed
-                self.createSnapshot(characterList: charactesList)
+                self.createSnapshot(characterList: charactesList, state: .completed)
             }
             .store(in: &disposeBag)
     }
@@ -83,7 +81,7 @@ class HomeViewController: BaseVC {
         collectionView.registerNibCell(ofType: HeoresCollectionViewCell.self)
     }
     
-    func createSnapshot(characterList: [MarvelCharacterModel]) {
+    func createSnapshot(characterList: [MarvelCharacterModel], state: LoadingState) {
         var snapshot = datasource.snapshot()
         snapshot.deleteAllItems()
         snapshot.appendSections([.sections(.characters)])
@@ -115,14 +113,14 @@ class HomeViewController: BaseVC {
     }
 }
 
-extension HomeViewController: UISearchResultsUpdating {
+extension MarvelCharacterListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         viewModel.filterListForSearchBar(string: searchController.searchBar.text ?? "")
     }
     
 }
 
-extension HomeViewController: UIScrollViewDelegate {
+extension MarvelCharacterListViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
@@ -133,7 +131,7 @@ extension HomeViewController: UIScrollViewDelegate {
     }
 }
 
-extension HomeViewController: UICollectionViewDelegate {
+extension MarvelCharacterListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? HeoresCollectionViewCell else {return}
         if let model = cell.marvelCharacterModel {

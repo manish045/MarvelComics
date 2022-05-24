@@ -26,7 +26,7 @@ class HeoresCollectionViewCell: UICollectionViewCell {
         didSet {
             characterNameLabel.text = marvelCharacterModel.name
             self.characterDescriptionLabel.text = marvelCharacterModel.resultDescription
-            characterImageView.downloadImage(from: marvelCharacterModel.thumbnail?.imageString, placeholderImage: UIImage(named: ""))
+            characterImageView.downloadImage(from: marvelCharacterModel.thumbnail?.imageString, placeholderImage: UIImage(named: "Marvel"))
         }
     }
 }

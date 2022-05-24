@@ -68,7 +68,7 @@ class MarvelComicsServiceAPITests: XCTestCase {
         apiService = FailableServiceAPI()
         apiService.performRequest(endPoint: .characters, parameters: [:]) { (result: APIResult<ComicsDataModel, APIError>) in
             switch result {
-            case .error(let error):`
+            case .error(let error):
                 XCTAssertNotNil(error)
                 expectation.fulfill()
             default:
