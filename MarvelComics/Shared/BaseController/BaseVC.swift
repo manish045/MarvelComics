@@ -11,6 +11,7 @@ import UIKit
 class BaseVC: UIViewController {
    
     var stateView:SDStateView?
+    let scheduler: SchedulerContext = SchedulerContextProvider.provide()
 
     override func viewDidLoad() {
         super.viewDidLoad()
