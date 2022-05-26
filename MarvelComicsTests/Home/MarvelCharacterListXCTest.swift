@@ -6,9 +6,20 @@
 //
 
 import XCTest
+import Combine
 @testable import MarvelComics
 
 class MarvelCharacterListXCTest: XCTestCase {
+    
+    var cancellables: Set<AnyCancellable>!
+    
+    override func setUp() {
+        cancellables = []
+    }
+    
+    override func tearDown() {
+        cancellables = nil
+    }
     
     //MARK:- Test the datasource before request to server
     func testEmptyValueInDataSourceWhenLoadingDataFromServer() throws {
@@ -86,6 +97,36 @@ class MarvelCharacterListXCTest: XCTestCase {
         
         // expected zero cells
         XCTAssertEqual(collectionView?.numberOfItems(inSection: MarvelCharacterSection.characters.rawValue), 1)
+    }
+    
+    func testObservers() throws {
+        let sut = try makeSUT()
+        
+        let viewModel = sut.viewModel!
+        
+        let expectation = XCTestExpectation(description: "load data")
+        let errorExpectation = XCTestExpectation(description: "Error Occured")
+        let searchExpectation = XCTestExpectation(description: "search occured")
+        
+        viewModel.loadDataSource
+            .sink (receiveValue: { (_, value) in
+                XCTAssertEqual(value.count, 0)
+                expectation.fulfill()
+            })
+            .store(in: &cancellables)
+        
+        viewModel.didGetError
+            .sink { _ in
+                errorExpectation.fulfill()
+            }
+            .store(in: &cancellables)
+        
+        viewModel.searchTextSubject
+            .sink (receiveValue: { value in
+                XCTAssertNotNil(value)
+                searchExpectation.fulfill()
+            })
+            .store(in: &cancellables)
     }
     
     
