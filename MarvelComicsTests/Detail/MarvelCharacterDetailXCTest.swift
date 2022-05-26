@@ -6,9 +6,20 @@
 //
 
 import XCTest
+import Combine
 @testable import MarvelComics
 
 class MarvelCharacterDetailXCTest: XCTestCase {
+    
+    var cancellables: Set<AnyCancellable>!
+    
+    override func setUp() {
+        cancellables = []
+    }
+    
+    override func tearDown() {
+        cancellables = nil
+    }
     
     //MARK:- Test the datasource before request comics from server
     func testValueInDataSourceWhenLoadingComicsFromServer() throws {
@@ -77,6 +88,22 @@ class MarvelCharacterDetailXCTest: XCTestCase {
         XCTAssertEqual(collectionView?.numberOfItems(inSection: MCharacterDetailSection.characterImageAndDescription.rawValue), 1)
         
         XCTAssertEqual(collectionView?.numberOfItems(inSection: MCharacterDetailSection.comicsForCharater.rawValue), 1)
+    }
+    
+    
+    func testObservers() throws {
+        let sut = try makeSUT()
+        
+        let viewModel = sut.viewModel!
+        
+        let expectation = XCTestExpectation(description: "load data")
+        
+        viewModel.loadDataSource
+            .sink (receiveValue: { list in
+                XCTAssertEqual(list.count, 0)
+                expectation.fulfill()
+            })
+            .store(in: &cancellables)
     }
     
     private func makeSUT() throws -> MCharacterDetailViewController  {

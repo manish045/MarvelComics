@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+
 public extension NSDirectionalEdgeInsets {
     static func uniform(size: CGFloat) -> NSDirectionalEdgeInsets {
         return NSDirectionalEdgeInsets(top: size, leading: size, bottom: size, trailing: size)
@@ -27,5 +28,12 @@ public extension NSDirectionalEdgeInsets {
     
     static func large() -> NSDirectionalEdgeInsets {
         return .uniform(size: 30)
+    }
+}
+
+extension UIView {
+    func setCornerRadius(_ radius: CGFloat) {
+        self.clipsToBounds = true
+        self.layer.cornerRadius = radius
     }
 }

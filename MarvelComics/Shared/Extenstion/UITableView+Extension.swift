@@ -1,5 +1,5 @@
 //
-// UICollectionView+Extension.swift
+//    UITableView+Extension.swift
 //  Marvel Comics
 //
 //  Created by Manish Tamta on 19/05/2022.
