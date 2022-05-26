@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B9AB8EBC283F45B000F49169 /* UIImageView+ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AB8EB5283F45B000F49169 /* UIImageView+ImageLoader.swift */; };
+		B9AB8EBD283F45B000F49169 /* UIView+NibRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AB8EB7283F45B000F49169 /* UIView+NibRepresentable.swift */; };
+		B9AB8EBE283F45B000F49169 /* UIView+NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AB8EB8283F45B000F49169 /* UIView+NibView.swift */; };
+		B9AB8EBF283F45B000F49169 /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AB8EB9283F45B000F49169 /* NibView.swift */; };
+		B9AB8EC0283F45B000F49169 /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AB8EBA283F45B000F49169 /* extension.swift */; };
+		B9AB8EC1283F45B000F49169 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AB8EBB283F45B000F49169 /* UITableView+Extension.swift */; };
+		B9AB8EC4283F466000F49169 /* SchedulerContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AB8EC3283F466000F49169 /* SchedulerContext.swift */; };
 		B9BC7A2F2838A05E0049A441 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = B9BC7A2E2838A05E0049A441 /* SDWebImage */; };
 		B9BC7A322838A8180049A441 /* MCharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BC7A312838A8180049A441 /* MCharacterDetailViewController.swift */; };
 		B9BC7A392838A8C50049A441 /* DefaultMCharacterDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BC7A382838A8C50049A441 /* DefaultMCharacterDetailViewModel.swift */; };
