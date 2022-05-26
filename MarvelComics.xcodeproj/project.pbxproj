@@ -18,7 +18,6 @@
 		B9BC7A5328397CEF0049A441 /* MHeroDescriptionWithImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9BC7A5128397CEF0049A441 /* MHeroDescriptionWithImageCollectionViewCell.xib */; };
 		B9BC7A56283998890049A441 /* MHeroComicHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BC7A54283998890049A441 /* MHeroComicHeaderCollectionReusableView.swift */; };
 		B9BC7A57283998890049A441 /* MHeroComicHeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9BC7A55283998890049A441 /* MHeroComicHeaderCollectionReusableView.xib */; };
-		B9BC7A5B2839AB920049A441 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BC7A5A2839AB920049A441 /* Utils.swift */; };
 		B9BC7A5E2839B4D80049A441 /* MarvelComicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BC7A5D2839B4D80049A441 /* MarvelComicModel.swift */; };
 		B9D7C15D2836F201009EC0E8 /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D7C15C2836F201009EC0E8 /* NibView.swift */; };
 		B9D7C15F283702EE009EC0E8 /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D7C15E283702EE009EC0E8 /* AppAppearance.swift */; };
@@ -95,7 +94,6 @@
 		B9BC7A5128397CEF0049A441 /* MHeroDescriptionWithImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MHeroDescriptionWithImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		B9BC7A54283998890049A441 /* MHeroComicHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHeroComicHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		B9BC7A55283998890049A441 /* MHeroComicHeaderCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MHeroComicHeaderCollectionReusableView.xib; sourceTree = "<group>"; };
-		B9BC7A5A2839AB920049A441 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		B9BC7A5D2839B4D80049A441 /* MarvelComicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelComicModel.swift; sourceTree = "<group>"; };
 		B9D7C15C2836F201009EC0E8 /* NibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NibView.swift; path = ../Common/Base/NibView.swift; sourceTree = "<group>"; };
 		B9D7C15E283702EE009EC0E8 /* AppAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
@@ -378,7 +376,6 @@
 			isa = PBXGroup;
 			children = (
 				B9E653102836C8B300AD1819 /* SchedulerContext.swift */,
-				B9BC7A5A2839AB920049A441 /* Utils.swift */,
 			);
 			name = Util;
 			path = "../../../Desktop/Video Streamer/Video Streamer/Util";
@@ -728,7 +725,6 @@
 				B9BC7A322838A8180049A441 /* MCharacterDetailViewController.swift in Sources */,
 				B9DBC4D2283B9F9000BF514A /* UIImageView+ImageLoader.swift in Sources */,
 				B9FDEA122835C51500767B66 /* HomeViewModel.swift in Sources */,
-				B9BC7A5B2839AB920049A441 /* Utils.swift in Sources */,
 				B9DBC4DF283B9FD600BF514A /* UIViewAutolayout.swift in Sources */,
 				B9FDC0C42837E9080005D451 /* APIService+URL.swift in Sources */,
 				B9FDEA3F2836A74400767B66 /* DiffableDatasource.swift in Sources */,
